@@ -31,6 +31,5 @@ This is a Node.js Express server integrated with Firebase Realtime Database that
 
 ---
 
-## 📁 Project Structure
 
 
