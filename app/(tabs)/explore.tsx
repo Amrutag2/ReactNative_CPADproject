@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import Ionicons from '@expo/vector-icons/Ionicons';
+>>>>>>> 5afc81d8a6ccece98638bafd6f1a372e34cb2e43
 import { StyleSheet, Image, Platform } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
@@ -5,12 +9,16 @@ import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+<<<<<<< HEAD
 import { IconSymbol } from '@/components/ui/IconSymbol';
+=======
+>>>>>>> 5afc81d8a6ccece98638bafd6f1a372e34cb2e43
 
 export default function TabTwoScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+<<<<<<< HEAD
       headerImage={
         <IconSymbol
           size={310}
@@ -19,6 +27,9 @@ export default function TabTwoScreen() {
           style={styles.headerImage}
         />
       }>
+=======
+      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
+>>>>>>> 5afc81d8a6ccece98638bafd6f1a372e34cb2e43
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
@@ -79,8 +90,13 @@ export default function TabTwoScreen() {
         <ThemedText>
           This template includes an example of an animated component. The{' '}
           <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
+<<<<<<< HEAD
           the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
           library to create a waving hand animation.
+=======
+          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
+          to create a waving hand animation.
+>>>>>>> 5afc81d8a6ccece98638bafd6f1a372e34cb2e43
         </ThemedText>
         {Platform.select({
           ios: (

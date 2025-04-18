@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { useEffect } from 'react';
+=======
+>>>>>>> 5afc81d8a6ccece98638bafd6f1a372e34cb2e43
 import { StyleSheet } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -13,12 +16,19 @@ import { ThemedText } from '@/components/ThemedText';
 export function HelloWave() {
   const rotationAnimation = useSharedValue(0);
 
+<<<<<<< HEAD
   useEffect(() => {
     rotationAnimation.value = withRepeat(
       withSequence(withTiming(25, { duration: 150 }), withTiming(0, { duration: 150 })),
       4 // Run the animation 4 times
     );
   }, []);
+=======
+  rotationAnimation.value = withRepeat(
+    withSequence(withTiming(25, { duration: 150 }), withTiming(0, { duration: 150 })),
+    4 // Run the animation 4 times
+  );
+>>>>>>> 5afc81d8a6ccece98638bafd6f1a372e34cb2e43
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${rotationAnimation.value}deg` }],
