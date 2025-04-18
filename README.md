@@ -6,13 +6,8 @@ A simple library management system built using **React Native (Expo)** for the f
 - [Introduction](#introduction)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
+  
 ## Introduction
 
 This Library Management System allows users to manage books, borrow/return books, and track book availability in a digital library. The system is built with a React Native Expo app for the user interface, Firebase for storing book and user data, and a Node.js backend to handle business logic and communication between the app and Firebase.
