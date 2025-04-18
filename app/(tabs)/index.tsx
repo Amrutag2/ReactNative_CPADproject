@@ -1,70 +1,136 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 
 export default function HomeScreen() {
+  const [display, setDisplay] = useState("");
+
+  // Function to append to the display
+  const appendToDisplay = (value: string) => {
+    setDisplay(display + value);
+  };
+
+  // Function to clear the display
+  const clearDisplay = () => {
+    setDisplay("");
+  };
+
+  // Function to calculate the result
+  const calculateResult = () => {
+    try {
+      const result = eval(display); // Calculate the result using eval
+      setDisplay(result.toString());
+    } catch (error) {
+      setDisplay("Error");
+    }
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <TextInput style={styles.display} value={display} editable={false} />
+      
+      <View style={styles.buttons}>
+        <TouchableOpacity style={styles.button} onPress={clearDisplay}>
+          <Text style={styles.buttonText}>C</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('%')}>
+          <Text style={styles.buttonText}>%</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('/')}>
+          <Text style={styles.buttonText}>/</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('*')}>
+          <Text style={styles.buttonText}>*</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('7')}>
+          <Text style={styles.buttonText}>7</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('8')}>
+          <Text style={styles.buttonText}>8</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('9')}>
+          <Text style={styles.buttonText}>9</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('-')}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('4')}>
+          <Text style={styles.buttonText}>4</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('5')}>
+          <Text style={styles.buttonText}>5</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('6')}>
+          <Text style={styles.buttonText}>6</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('+')}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('1')}>
+          <Text style={styles.buttonText}>1</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('2')}>
+          <Text style={styles.buttonText}>2</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('3')}>
+          <Text style={styles.buttonText}>3</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('0')}>
+          <Text style={styles.buttonText}>0</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => appendToDisplay('.')}>
+          <Text style={styles.buttonText}>.</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.equalButton]} onPress={calculateResult}>
+          <Text style={styles.buttonText}>=</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    backgroundColor: '#f0f0f0',
+    padding: 10,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  display: {
+    width: '100%',
+    backgroundColor: '#eee',
+    textAlign: 'right',
+    fontSize: 36,
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 5,
+    color: '#000',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  buttons: {
+    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  button: {
+    width: '22%',
+    backgroundColor: '#008cba',
+    padding: 20,
+    margin: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 24,
+    color: '#fff',
+  },
+  equalButton: {
+    backgroundColor: '#28a745',
+    width: '47%',
   },
 });
